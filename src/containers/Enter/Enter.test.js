@@ -13,5 +13,10 @@ describe('<Enter/>', () => {
 
     it('should exist', () => {
         expect(enter.exists()).toBe(true);
-    })
+    });
+
+    it('should have button game start', () => {
+        expect(enter.html()).toContain('Start Game');
+    });
+    
 });
