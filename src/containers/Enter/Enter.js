@@ -5,7 +5,7 @@ export class Enter extends Component {
     render () {
         return(
             <div className="Enter">
-                <Button>Start Game</Button>
+                <Button onClick={this.props.startGame} clases={['start-game']}>Start Game</Button>
             </div>
         )
     }

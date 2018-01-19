@@ -18,5 +18,5 @@ describe('<Enter/>', () => {
     it('should have button game start', () => {
         expect(enter.html()).toContain('Start Game');
     });
-    
+
 });
