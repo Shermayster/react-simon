@@ -25,7 +25,7 @@ describe('<Enter/>', () => {
 
     it('should load game if game started', () => {
        app.instance().changeGameState('game');
-       console.log(app.html())
+       app.update();
        expect(app.find(Game).length).toBe(1);
     });
 })

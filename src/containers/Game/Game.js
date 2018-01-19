@@ -5,7 +5,7 @@ export class Game extends Component {
     render() {
         return (
             <div className="Game">
-            
+                <p>game state</p>
             </div>
         )
 

@@ -12,19 +12,19 @@ class App extends Component {
   }
 
   changeGameState = (state) => {
-    this.setState((state) => {
+    this.setState(() => {
       return { gameState: state }
     })
   }
   renderGameState = () => this.state.gameState === "start" ? 
-  <Enter startGame={this.changeGameState} /> : this.state.gameState === "game" ? <Game/> : <p>{this.state.gameState}</p>
+  <Enter startGame={() => this.changeGameState('game')} /> : 
+  this.state.gameState === 'game' ? <Game/> : 
+  <p>{this.state.gameState}</p>
 
   
 
   render() {
-    return (
-      this.renderGameState()
-    );
+    return ( this.renderGameState() );
   }
 }
 
