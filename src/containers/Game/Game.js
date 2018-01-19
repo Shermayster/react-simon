@@ -5,7 +5,10 @@ export class Game extends Component {
     render() {
         return (
             <div className="Game">
-                <p>game state</p>
+                <Button>Red</Button>
+                <Button>Green</Button>
+                <Button>Blue</Button>
+                <Button>Yellow</Button>
             </div>
         )
 
