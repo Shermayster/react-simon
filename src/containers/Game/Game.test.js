@@ -14,4 +14,7 @@ describe('<Game/>', () => {
     it('should render', () => {
         expect(game.exists()).toBe(true);
     });
+    it('should have 4 buttons', () => {
+        expect(game.find('button').length).toBe(4)
+    });
 });
