@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
+import './Enter.css';
 
 export class Enter extends Component {
     test = ()  => {

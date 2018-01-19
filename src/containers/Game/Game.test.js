@@ -17,4 +17,8 @@ describe('<Game/>', () => {
     it('should have 4 buttons', () => {
         expect(game.find('button').length).toBe(4)
     });
+    
+    it('should ', () => {
+        
+    });
 });
