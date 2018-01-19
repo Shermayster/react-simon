@@ -12,7 +12,7 @@ describe('<Button/>', () => {
     });
 
     it('should be defined', () => {
-        expect(wrapper).toBeDefined();
+        expect(wrapper.exists()).toBe(true);
     });
 
     it('should call to function', () => {
@@ -21,5 +21,16 @@ describe('<Button/>', () => {
         const button = wrapper.find('.Button');
         button.simulate('click');
         expect(spy).toHaveBeenCalled();    
+    });
+
+    it('should reciev classes', () => {
+        wrapper.setProps({clases: ['test-class']});
+        const button = wrapper.find('.test-class');
+        expect(button.exists()).toBe(true);
+    });
+
+    it('should disable by props', () => {
+        wrapper.setProps({disabled: true});
+        expect(wrapper.html()).toContain('disabled');
     })
 })
