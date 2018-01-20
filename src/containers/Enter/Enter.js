@@ -3,9 +3,6 @@ import Button from '../../components/Button/Button';
 import './Enter.css';
 
 export class Enter extends Component {
-    test = ()  => {
-        console.log('test')
-     }
     render () {
         return(
             <div className="Enter">

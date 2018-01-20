@@ -18,7 +18,14 @@ describe('<Game/>', () => {
         expect(game.find('button').length).toBe(4)
     });
     
-    it('should ', () => {
-        
+    it('should have current turn count', () => {
+        const turn = game.instance().state.playerTurn;
+        expect(turn).toBe(0);
+    });
+
+    it('should have order of colors array', () => {
+        game.update();
+        const colors = game.instance().state.colors;
+        expect(colors.length).toBe(1);
     });
 });
