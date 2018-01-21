@@ -11,15 +11,20 @@ export class Game extends Component {
             colors: []
         }
     }
+    
     addColor = () => {
         this.setState(() => {
             return {colors: [...this.state.colors, getRandomNum()]}
         });
     }
+    
     componentDidMount() {
         this.addColor();
     }
 
+    finishGame = () => {
+        return this.props.onFinishGame(this.state.playerTurn);
+    }    
 
     render() {
         return (
@@ -28,6 +33,7 @@ export class Game extends Component {
                 <Button clases={['Green']}>Green</Button>
                 <Button clases={['Blue']}>Blue</Button>
                 <Button clases={['Yellow']}>Yellow</Button>
+                <button onClick={this.finishGame.bind(this)}>Finish</button>
             </div>
         )
 

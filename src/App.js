@@ -2,26 +2,49 @@ import React, { Component } from 'react';
 import './App.css';
 import { Enter } from './containers/Enter/Enter';
 import { Game } from './containers/Game/Game';
+import { Result } from './containers/Result/result';
 
 class App extends Component {
   constructor(props = {gameSate: "start"}) {
     super(props)
     this.state = {
-      gameState: "start"
+      gameState: "start",
+      score: 0
     }
   }
 
-  changeGameState = (state) => {
+  changeGameState = (state, score) => {
     this.setState(() => {
-      return { gameState: state }
+      return { 
+          gameState: state,
+          score:score
+      }
     })
   }
-  renderGameState = () => this.state.gameState === "start" ? 
-  <Enter startGame={() => this.changeGameState('game')} /> : 
-  this.state.gameState === 'game' ? <Game/> : 
-  <p>{this.state.gameState}</p>
 
-  
+  finishGame = (score) => {
+    console.log(this.props)
+    console.log(score);
+    this.changeGameState('result', score);
+  }
+
+
+  renderGameState = () => {
+      switch(this.state.gameState){
+        case('start') : {
+          return <Enter startGame={() => this.changeGameState('game', 0)} />;
+        } break;
+        case('game') : {
+          return <Game onFinishGame = {this.finishGame}/>;
+        } break;
+        case('result') : {
+          return <Result score = {this.state.score} startGame={() => this.changeGameState('game', 0)} />;
+        }
+        dafault:{
+          return <p>{this.state.gameState}</p>
+        }
+      }
+  }
 
   render() {
     return ( this.renderGameState() );
