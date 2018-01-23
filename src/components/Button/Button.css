@@ -1,0 +1,94 @@
+.Button {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  border-radius: 5px;
+  color: #fff;
+  width: 15rem;
+  background: #bd2df5;
+}
+.Button.active {
+    box-shadow: unset;
+    top: unset;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid;
+    
+}
+.Button:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Button 1 */
+.Red {
+	background: #cb4e4e;
+	box-shadow: 0 6px #ab3c3c;
+  
+}
+.Red:active{
+    box-shadow: 0 0 #ab3c3c;
+	  top: 6px;
+  }
+.Red:hover {
+	box-shadow: 0 8px #ab3c3c;
+	top: -2px;
+}
+/* Button 2 */
+.Blue {
+	background: #0e83cd;
+	box-shadow: 0 6px #085a8e;
+}
+
+.Blue:active {
+    box-shadow: 0 0 #085a8e;
+	  top: 6px;
+  }
+.Blue:hover {
+	box-shadow: 0 8px #085a8e;
+	top: -2px;
+}
+/* Button 3 */
+.Yellow {
+	background: #fcad26;
+	box-shadow: 0 6px #b17713;
+}
+.Yellow:active {
+    box-shadow: 0 0 #b17713;
+    top: 6px;
+}
+.Yellow:hover {
+	box-shadow: 0 8px #b17713;
+	top: -2px;
+}
+/* Button 4 */
+.Green {
+	background: #17954c;
+	box-shadow: 0 6px #0f6131;
+}
+.Green:active {
+    box-shadow: 0 0 #0f6131;
+	  top: 6px;
+  }
+.Green:hover {
+	box-shadow: 0 8px #0f6131;
+	top: -2px;
+}
