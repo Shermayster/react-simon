@@ -14,7 +14,7 @@ export class Result extends Component {
         return (
             <div className="Result">
                 <p>Score:{this.state.score}</p>
-                <button onClick={this.props.startGame}>Restart</button>
+                <Button clicked={() => this.props.startGame()} clases={['start-game']}>Re-start</Button>
             </div>
         )
     }
