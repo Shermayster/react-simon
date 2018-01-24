@@ -37,8 +37,8 @@ export class Game extends Component {
     }
 
     handleRightAnswer() {
-        this.setState(() => {
-            return {playerTurn: this.state.playerTurn + 1}
+        this.setState((prevState) => {
+            return {playerTurn: prevState.playerTurn++}
         });
         this.addColor();
     }

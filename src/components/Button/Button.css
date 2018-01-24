@@ -27,7 +27,24 @@
     background-color: #fff;
     color: #000;
     border: 1px solid;
-    
+}
+.Button:active::before {
+	animation: effect_dylan; 
+}
+
+@keyframes effect_dylan {
+	50% {
+	  transform: scale(1.5, 1.5);
+	  opacity: 0;
+	}
+	99% {
+	  transform: scale(0.001, 0.001);
+	  opacity: 0;
+	}
+	100% {
+	  transform: scale(0.001, 0.001);
+	  opacity: 1;
+	}
 }
 .Button:after {
 	content: '';
