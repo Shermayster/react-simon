@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
 import './Game.css';
-var colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
-var getRandomNum = () =>  Math.floor(Math.random() * 4);
+const colorsEnum = Object.freeze({0: "Red", 1: "Green", 2: "Blue", 3: "Yellow"});
+const getRandomNum = () =>  Math.floor(Math.random() * 4);
 
 export class Game extends Component {
     constructor(props) {
@@ -37,8 +37,9 @@ export class Game extends Component {
     }
 
     handleRightAnswer() {
-        this.setState((prevState) => {
-            return {playerTurn: prevState.playerTurn++}
+        const playerTurn = this.state.playerTurn;
+        this.setState(() => {
+            return {playerTurn: playerTurn + 1}
         });
         this.addColor();
     }
@@ -53,8 +54,18 @@ export class Game extends Component {
     }
 
     getColors = () => {
-        return this.state.colors.map(color => <span>{colorsEnum[color]}</span>)
+        return this.state.colors.map((color, index) => <span key={colorsEnum[color]+index}>{colorsEnum[color]}</span>)
     }
+
+    getButtons = () => {
+        return Object.values(colorsEnum).map((color, index) => {
+            return <Button key={color+"Button"} 
+                        clicked={() => this.handlePlayerTurn(index)} 
+                        clases={[color]}>{color}
+                    </Button>
+        })
+    }
+
 
     render() {
         return (
@@ -62,10 +73,7 @@ export class Game extends Component {
                 <div>
                     <span>Player Turn: {this.state.playerTurn}</span>
                 </div>
-                <Button clicked={() => this.handlePlayerTurn(0)} clases={['Red']}>{colorsEnum[0]}</Button>
-                <Button clicked={() => this.handlePlayerTurn(1)} clases={['Green']}>{colorsEnum[1]}</Button>
-                <Button clicked={() => this.handlePlayerTurn(2)} clases={['Blue']}>{colorsEnum[2]}</Button>
-                <Button clicked={() => this.handlePlayerTurn(3)} clases={['Yellow']}>{colorsEnum[3]}</Button>
+                {this.getButtons()}
                 {this.getColors()}
             </div>
         )
