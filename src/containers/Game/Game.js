@@ -13,15 +13,19 @@ export class Game extends Component {
         this.state = {
             playerTurn: props.playerTurn || 0,
             colors: props.colors || [],
-            showList:true
+            showListFlag:true,
+            score : -1
         }
+        //TO-DO make someting beautiful about start score  
     }
     
     addColor = () => {
         this.setState(() => {
             return {
+                playerTurn:0,
                 colors: [...this.state.colors, getRandomNum()],                
-                showListFlag:true
+                showListFlag:true,
+                score:this.state.score + 1
             }
         });
         this.hideList();
@@ -29,7 +33,6 @@ export class Game extends Component {
 
     hideList(){
         this.state.colors.length != 0 ? showListTime = this.state.colors.length * 2000 : showListTime = showListTime;
-        console.log(showListTime);
         setTimeout(()=>{
             this.setState(() => {
                 return {            
@@ -60,13 +63,18 @@ export class Game extends Component {
 
     handleRightAnswer() {
         this.setState(() => {
-            return {playerTurn: this.state.playerTurn + 1}
-        });
-        this.addColor();
+            return {
+                playerTurn: this.state.playerTurn + 1
+            }
+        },() => {
+            if(this.state.colors.length == this.state.playerTurn){
+                this.addColor();
+            } 
+        });    
     }
 
     finishGame = () => {
-        return this.props.onFinishGame(this.state.playerTurn);
+        return this.props.onFinishGame(this.state.score);
     }    
 
     handleWrongAnswer() {
@@ -74,14 +82,13 @@ export class Game extends Component {
     }
 
     getColors = () => {
-        return this.state.colors.map(color => <span>{colorsEnum[color]}</span>)
+        return this.state.colors.map((color, idx) => <span id="color-{idx.toString()}" > {colorsEnum[color]}</span>)
     }
 
 
     render() {
         return (
             <div className="Game">
-
                 <div>
                     <span>Player Turn: {this.state.playerTurn}</span>
                 </div>
@@ -92,7 +99,6 @@ export class Game extends Component {
                 { this.state.showListFlag ? <List colors = {this.getColors()}></List> : null }
             </div>
         )
-
     }
 }
 
