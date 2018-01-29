@@ -11,7 +11,8 @@ export class Game extends Component {
         this.state = {
             playerTurn: props.playerTurn || 0,
             colors: props.colors || [],
-            showModal: true
+            showModal: true,
+            modalContent: null
         }
     }
     addColor = () => {
@@ -23,6 +24,9 @@ export class Game extends Component {
         if(this.state.colors.length === 0) {
             this.addColor();
         }
+        this.setState(() => {
+            return {modalContent: this.getColors()}
+        })
     }
 
     handlePlayerTurn = (buttonColor) => {
@@ -76,6 +80,10 @@ export class Game extends Component {
         });
     }
 
+    getModalContent = () => {
+        return this.getColors();
+    }
+
 
     render() {
         return (
@@ -85,7 +93,10 @@ export class Game extends Component {
                 </div>
                 {this.getButtons()}
                 {this.getColors()}
-                <Modal display={this.state.showModal ? 'block' : 'none'} toggleModal={() => this.toggleModal()}/>
+                <Modal display={this.state.showModal ? 'block' : 'none'} 
+                toggleModal={() => this.toggleModal()}
+                modalContent={this.state.modalContent}
+                />
             </div>
         )
 
