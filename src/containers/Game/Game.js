@@ -4,9 +4,9 @@ import Modal from '../../components/Modal/Modal';
 import './Game.css';
 import List from '../List/list';
 import { setTimeout } from 'timers';
-var colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
-var getRandomNum = () =>  Math.floor(Math.random() * 4);
-let showModalTime = 2000;
+const colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
+const getRandomNum = () =>  Math.floor(Math.random() * 4);
+const showModalTime = 2000;
 
 
 export class Game extends Component {
@@ -47,10 +47,10 @@ export class Game extends Component {
     }
 
     hideModalAferDelay(){
-        this.state.colors.length != 0 ? showModalTime = this.state.colors.length * 2000 : showModalTime = showModalTime;
+        const currentModalTime = showModalTime * (this.state.colors.length ? this.state.colors.length : 1);
         setTimeout(() =>{
             this.hideModal();      
-        }, showModalTime);
+        }, currentModalTime);
     }
 
     hideModal = () => {
@@ -66,11 +66,9 @@ export class Game extends Component {
             this.addColor();
         }
         this.setState(() => {
-            return {modalContent: this.getColors()}
+            return { modalContent: this.getColors() }
         });
         this.hideModalAferDelay();
-        // this.closeModalAfterDelay();
-
     }
 
     closeModalAfterDelay = () => {
