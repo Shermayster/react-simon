@@ -56,56 +56,56 @@
 }
 
 /* Button 1 */
-.Red {
+.RED {
 	background: #cb4e4e;
 	box-shadow: 0 6px #ab3c3c;
   
 }
-.Red:active{
+.RED:active{
     box-shadow: 0 0 #ab3c3c;
 	  top: 6px;
   }
-.Red:hover {
+.RED:hover {
 	box-shadow: 0 8px #ab3c3c;
 	top: -2px;
 }
 /* Button 2 */
-.Blue {
+.BLUE {
 	background: #0e83cd;
 	box-shadow: 0 6px #085a8e;
 }
 
-.Blue:active {
+.BLUE:active {
     box-shadow: 0 0 #085a8e;
 	  top: 6px;
   }
-.Blue:hover {
+.BLUE:hover {
 	box-shadow: 0 8px #085a8e;
 	top: -2px;
 }
 /* Button 3 */
-.Yellow {
+.YELLOW {
 	background: #fcad26;
 	box-shadow: 0 6px #b17713;
 }
-.Yellow:active {
+.YELLOW:active {
     box-shadow: 0 0 #b17713;
     top: 6px;
 }
-.Yellow:hover {
+.YELLOW:hover {
 	box-shadow: 0 8px #b17713;
 	top: -2px;
 }
 /* Button 4 */
-.Green {
+.GREEN {
 	background: #17954c;
 	box-shadow: 0 6px #0f6131;
 }
-.Green:active {
+.GREEN:active {
     box-shadow: 0 0 #0f6131;
 	  top: 6px;
   }
-.Green:hover {
+.GREEN:hover {
 	box-shadow: 0 8px #0f6131;
 	top: -2px;
 }

@@ -71,16 +71,13 @@ export class Game extends Component {
         this.hideModalAferDelay();
     }
 
-    closeModalAfterDelay = () => {
-        setTimeout(() => this.toggleModal(), 2000)
-    }
     handlePlayerTurn = (buttonColor) => {
         this.handlePlayerColor(buttonColor);
     }
 
     handlePlayerColor = (buttonColor) => {
         this.checkIfColorsMatch(buttonColor) ? 
-        this.handleRightAnswer() : this.handleWrongAnswer()
+        this.handleRightAnswer() : this.handleWrongAnswer();
     }
 
     checkIfColorsMatch(buttonColor) {
@@ -101,7 +98,7 @@ export class Game extends Component {
     }
 
     checkTurn = () => {
-        return this.state.colors.length === this.state.playerTurn 
+        return this.state.colors.length === this.state.playerTurn;
     }
     addNextStep = () => {
         this.addColor();
