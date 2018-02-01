@@ -52,9 +52,15 @@ export class Game extends Component {
         }
         this.setState(() => {
             return {modalContent: this.getColors()}
-        })
+        });
+
+        this.closeModalAfterDelay();
+        
     }
 
+    closeModalAfterDelay = () => {
+        setTimeout(() => this.toggleModal(), 2000)
+    }
     handlePlayerTurn = (buttonColor) => {
         this.handlePlayerColor(buttonColor);
     }
@@ -113,9 +119,6 @@ export class Game extends Component {
     getModalContent = () => {
         return this.getColors();
     }
-
-        // return this.state.colors.map((color, idx) => <span id="color-{idx.toString()}" > {colorsEnum[color]}</span>)
-
 
     render() {
         return (
