@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
 import './Game.css';
-const colorsEnum = Object.freeze({0: "Red", 1: "Green", 2: "Blue", 3: "Yellow"});
-const getRandomNum = () =>  Math.floor(Math.random() * 4);
+import List from '../List/list';
+import { setTimeout } from 'timers';
+var colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
+var getRandomNum = () =>  Math.floor(Math.random() * 4);
+let showListTime = 2000;
+
 
 export class Game extends Component {
     constructor(props) {
@@ -12,14 +16,36 @@ export class Game extends Component {
             playerTurn: props.playerTurn || 0,
             colors: props.colors || [],
             showModal: true,
-            modalContent: null
+            modalContent: null,
+            showListFlag:true,
+            score : -1
         }
+        //TO-DO make someting beautiful about start score  
     }
+    
     addColor = () => {
         this.setState(() => {
-            return {colors: [...this.state.colors, getRandomNum()]}
+            return {
+                playerTurn:0,
+                colors: [...this.state.colors, getRandomNum()],                
+                showListFlag:true,
+                score:this.state.score + 1
+            }
         });
+        this.hideList();
     }
+
+    hideList(){
+        this.state.colors.length != 0 ? showListTime = this.state.colors.length * 2000 : showListTime = showListTime;
+        setTimeout(()=>{
+            this.setState(() => {
+                return {            
+                    showListFlag:false
+                }
+            });            
+        }, showListTime);
+    }
+    
     componentDidMount() {
         if(this.state.colors.length === 0) {
             this.addColor();
@@ -45,18 +71,22 @@ export class Game extends Component {
     handleRightAnswer() {
         const playerTurn = this.state.playerTurn;
         this.setState(() => {
-            return {playerTurn: playerTurn + 1}
-        });
-        this.addColor();
+            return {
+                playerTurn: this.state.playerTurn + 1
+            }
+        },() => {
+            if(this.state.colors.length == this.state.playerTurn){
+                this.addColor();
+            } 
+        });    
     }
 
+    finishGame = () => {
+        return this.props.onFinishGame(this.state.score);
+    }    
+
     handleWrongAnswer() {
-        this.setState(() => {
-            return {
-                playerTurn: 0,
-                colors: [getRandomNum()],
-            }
-        });
+        this.finishGame();
     }
 
     getColors = () => {
@@ -84,6 +114,8 @@ export class Game extends Component {
         return this.getColors();
     }
 
+        // return this.state.colors.map((color, idx) => <span id="color-{idx.toString()}" > {colorsEnum[color]}</span>)
+
 
     render() {
         return (
@@ -93,13 +125,14 @@ export class Game extends Component {
                 </div>
                 {this.getButtons()}
                 {this.getColors()}
+                
                 <Modal display={this.state.showModal ? 'block' : 'none'} 
                 toggleModal={() => this.toggleModal()}
                 modalContent={this.state.modalContent}
                 />
+                { this.state.showListFlag ? <List colors = {this.getColors()}></List> : null }
             </div>
         )
-
     }
 }
 

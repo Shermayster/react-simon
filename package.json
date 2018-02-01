@@ -2,7 +2,7 @@
   "name": "simon-game",
   "version": "0.1.0",
   "private": false,
-  "homepage" : "https://sherm84.github.io/react-simon/",
+  "homepage": "https://sherm84.github.io/react-simon/",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",

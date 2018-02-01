@@ -19,8 +19,8 @@ describe('<Game/>', () => {
     it('should render', () => {
         expect(game.exists()).toBe(true);
     });
-    it('should have 4 buttons', () => {
-        expect(game.find('button').length).toBe(4)
+    it('should have 5 buttons', () => {
+        expect(game.find('button').length).toBe(5)
     });
     
     it('should have current turn count', () => {
