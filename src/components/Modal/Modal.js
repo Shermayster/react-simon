@@ -6,7 +6,7 @@ const modal = (props) => (
         <div className="modal-content">
             <span onClick={props.toggleModal} className="modal-close-btn">&times;</span>
             <div>
-                { props.modalContent }
+                { props.children }
             </div>
         </div>
     </div>

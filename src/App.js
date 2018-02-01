@@ -33,14 +33,14 @@ class App extends Component {
       switch(this.state.gameState){
         case('start') : {
           return <Enter startGame={() => this.changeGameState('game', 0)} />;
-        } break;
+        };
         case('game') : {
           return <Game onFinishGame = {this.finishGame}/>;
-        } break;
+        };
         case('result') : {
           return <Result score = {this.state.score} startGame={() => this.changeGameState('game', 0)} />;
         }
-        dafault:{
+        {
           return <p>{this.state.gameState}</p>
         }
       }
