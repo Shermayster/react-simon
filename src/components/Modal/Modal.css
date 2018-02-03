@@ -20,6 +20,10 @@
     width: 80%;
 }
 
+.modal-content span {
+    margin: 10px;
+}
+
 /* The Close Button */
 .modal-close-btn {
     color: #aaaaaa;

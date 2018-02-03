@@ -118,7 +118,7 @@ export class Game extends Component {
 
     getColors = () => {
         return this.state.colors.map((color, index) => {
-            return <span key={colorsEnum[color]+index}>{colorsEnum[color]}</span>
+            return <div key={colorsEnum[color]+index}>{colorsEnum[color]}</div>
         })
     }
 
@@ -155,7 +155,6 @@ export class Game extends Component {
                     <span>Player Turn: {this.state.playerTurn}</span>
                 </div>
                 {this.getButtons()}
-                {this.getColors()}
                 {this.renderModal()}
                 
             </div>
