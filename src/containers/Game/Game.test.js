@@ -19,8 +19,8 @@ describe('<Game/>', () => {
     it('should render', () => {
         expect(game.exists()).toBe(true);
     });
-    it('should have 5 buttons', () => {
-        expect(game.find('button').length).toBe(5)
+    it('should have 4 buttons', () => {
+        expect(game.find('button').length).toBe(4)
     });
     
     it('should have current turn count', () => {
@@ -33,25 +33,19 @@ describe('<Game/>', () => {
         expect(colors.length).toBe(1);
     });
 
-    xit('should add turn on button click', () => {
-        const mountGame = mount(<Game/>);
-        mountGame.find('button.Red').simulate('click');
-        mountGame.update();
-        expect(mountGame.instance().state.playerTurn).toBe(1);
-    });
-
     it('should get color buttons clicked', () => {
         const mountGame = mount(<Game/>);
         const spy = jest.spyOn(mountGame.instance(), 'handlePlayerColor');
-        mountGame.find('button.Red').simulate('click');
+        mountGame.setProps({onFinishGame: () => null});
+        mountGame.find('button.RED').simulate('click');
         mountGame.update();
         expect(spy).toHaveBeenCalledWith(0);
     });
 
     xit('should check if color is matched', () => {
         const mountGame = mount(<Game/>);
-        mountGame.setProps({colors: [0]});
-        mountGame.find('button.Red').simulate('click');
+        mountGame.setProps({onFinishGame: () => null});
+        mountGame.find('button.RED').simulate('click');
         mountGame.update();
         expect(mountGame.instance().state.playerTurn).toBe(1);
     });

@@ -100,6 +100,7 @@ export class Game extends Component {
     checkTurn = () => {
         return this.state.colors.length === this.state.playerTurn;
     }
+
     addNextStep = () => {
         this.addColor();
         this.nulifyPlayerTurn();
@@ -156,7 +157,6 @@ export class Game extends Component {
                 </div>
                 {this.getButtons()}
                 {this.renderModal()}
-                
             </div>
         )
     }
