@@ -1,27 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Button.css';
+const playSound = (soundLink) =>{
+    if(!soundLink) return;
+    let sound = new Audio();
+    sound.src = soundLink;
+    sound.play();
+}
 
-
-class Button extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
-    playSound = (soundLink) =>{
-        if(!soundLink) return;
-        let sound = new Audio();
-        sound.src = soundLink;
-        sound.play();
-    }
-
-    render(){ return(
-    <button
-        disabled={this.props.disabled}
-        className={this.props.clases ? this.props.clases.join(' ') + ' Button' : 'Button'}
-        onClick={this.props.clicked}
-        onMouseDown = {() => this.playSound(this.props.soundLink)}
-        >{this.props.children}</button>
-    )};
+const button = (props) => {     
+   return (<button
+        disabled={props.disabled}
+        className={props.clases ? props.clases.join(' ') + ' Button' : 'Button'}
+        onClick={props.clicked}
+        onMouseDown = {() => playSound(props.soundLink)}
+        >{props.children}</button>);
 }   
 
-export default Button;
+export default button;

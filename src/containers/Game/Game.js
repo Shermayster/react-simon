@@ -7,20 +7,20 @@ import { setTimeout } from 'timers';
 const colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
 const Buttons = [
     {
-    color:"RED",
-    soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'   
+        color:"RED",
+        soundLink:'../../assets/sounds/simonSound1.mp3'   
     }, 
     { 
         color:"GREEN",
-        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
+        soundLink:'../../assets/sounds/simonSound2.mp3'
     },
     {
         color:"BLUE",
-        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
+        soundLink:'../../assets/sounds/simonSound3.mp3'
     },
     {
         color: "YELLOW",
-        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+        soundLink:'../../assets/sounds/simonSound4.mp3'
     }
 ];
 const getRandomNum = () =>  Math.floor(Math.random() * 4);
@@ -36,7 +36,7 @@ export class Game extends Component {
             showModal: true,
             modalContent: null,
             showListFlag:true,
-            score : -1
+            score: -1
         }
         //TO-DO make someting beautiful about start score  
     }
