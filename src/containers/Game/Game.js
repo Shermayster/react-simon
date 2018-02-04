@@ -4,23 +4,28 @@ import Modal from '../../components/Modal/Modal';
 import './Game.css';
 import List from '../List/list';
 import { setTimeout } from 'timers';
+import simonSound1 from '../../assets/sounds/simonSound1.mp3';
+import simonSound2 from '../../assets/sounds/simonSound2.mp3';
+import simonSound3 from '../../assets/sounds/simonSound3.mp3';
+import simonSound4 from '../../assets/sounds/simonSound4.mp3';
 const colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
+
 const Buttons = [
     {
         color:"RED",
-        soundLink:'../../assets/sounds/simonSound1.mp3'   
+        soundLink: simonSound1
     }, 
     { 
         color:"GREEN",
-        soundLink:'../../assets/sounds/simonSound2.mp3'
+        soundLink: simonSound2
     },
     {
         color:"BLUE",
-        soundLink:'../../assets/sounds/simonSound3.mp3'
+        soundLink: simonSound3
     },
     {
         color: "YELLOW",
-        soundLink:'../../assets/sounds/simonSound4.mp3'
+        soundLink: simonSound4
     }
 ];
 const getRandomNum = () =>  Math.floor(Math.random() * 4);
