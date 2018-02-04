@@ -5,6 +5,24 @@ import './Game.css';
 import List from '../List/list';
 import { setTimeout } from 'timers';
 const colorsEnum = Object.freeze({0: "RED", 1: "GREEN", 2: "BLUE", 3: "YELLOW"});
+const Buttons = [
+    {
+    color:"RED",
+    soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'   
+    }, 
+    { 
+        color:"GREEN",
+        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
+    },
+    {
+        color:"BLUE",
+        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
+    },
+    {
+        color: "YELLOW",
+        soundLink:'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+    }
+];
 const getRandomNum = () =>  Math.floor(Math.random() * 4);
 const showModalTime = 2000;
 
@@ -124,10 +142,12 @@ export class Game extends Component {
     }
 
     getButtons = () => {
-        return Object.values(colorsEnum).map((color, index) => {
-            return <Button key={color+"Button"} 
+        return Buttons.map((button, index) => {
+            return <Button key={button.color+"Button"} 
                         clicked={() => this.handlePlayerTurn(index)} 
-                        clases={[color]}>{color}
+                        clases={[button.color]}
+                        soundLink = {button.soundLink}
+                        >{button.color}
                     </Button>
         })
     }
