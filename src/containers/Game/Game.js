@@ -4,6 +4,7 @@ import Modal from '../../components/Modal/Modal';
 import './Game.css';
 import List from '../List/list';
 import { setTimeout } from 'timers';
+import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import simonSound1 from '../../assets/sounds/simonSound1.mp3';
 import simonSound2 from '../../assets/sounds/simonSound2.mp3';
 import simonSound3 from '../../assets/sounds/simonSound3.mp3';
@@ -167,6 +168,10 @@ export class Game extends Component {
         return this.getColors();
     }
 
+    test = () =>{
+        console.log('testtest');
+    }
+
     renderModal = () => {
         return this.state.showModal ? (<Modal display={this.state.showModal ? 'block' : 'none'} 
         toggleModal={() => this.hideModal()}>
@@ -176,11 +181,22 @@ export class Game extends Component {
 
     render() {
         return (
-            <div className="Game">
+            <div className="main">
                 <div>
                     <span>Player Turn: {this.state.playerTurn}</span>
                 </div>
-                {this.getButtons()}
+                
+                <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
+
+            <button className="item" onClick = {this.test}>btn</button>
+        </ReactCSSTransitionGroup>
+
+                
                 {this.renderModal()}
             </div>
         )

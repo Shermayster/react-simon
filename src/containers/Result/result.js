@@ -12,7 +12,7 @@ export class Result extends Component {
     
     render() {
         return (
-            <div className="Result">
+            <div className="main">
                 <p>Score:{this.state.score}</p>
                 <Button clicked={() => this.props.startGame()} clases={['start-game']}>Re-start</Button>
             </div>
